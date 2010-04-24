@@ -101,7 +101,7 @@ def encode(text):
     return urlquote(str(text), '')
 
 def twitter_specifier_handler(client):
-    return client.get('/account/verify_credentials')['screen_name']
+    return client.get('/account/verify_credentials')['screen_name'] #need to handle error
 
 OAUTH_APP_SETTINGS['twitter']['specifier_handler'] = twitter_specifier_handler
 
@@ -257,7 +257,9 @@ class OAuthClient(object):
             old = OAuthAccessToken.all().filter(
                 'specifier =', specifier).filter(
                 'service =', self.service)
-            db.delete(old) #this will raise IndexError: list index out of range error
+            if old.count() > 0:
+              db.delete()
+            #db.delete(old) #this will raise IndexError: list index out of range error in GAE 1.3.3
 
         self.token.put()
         self.set_cookie(key_name)
