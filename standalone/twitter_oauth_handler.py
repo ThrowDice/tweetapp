@@ -257,7 +257,7 @@ class OAuthClient(object):
             old = OAuthAccessToken.all().filter(
                 'specifier =', specifier).filter(
                 'service =', self.service)
-            db.delete(old)
+            db.delete(old) #this will raise IndexError: list index out of range error
 
         self.token.put()
         self.set_cookie(key_name)
