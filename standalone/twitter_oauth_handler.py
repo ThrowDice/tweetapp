@@ -306,6 +306,11 @@ class OAuthClient(object):
         else:
             key = self.service_key
 
+        #Twitter only support utf-8 encoding
+        for k,v in kwargs.items():
+            if isinstance(v, unicode):
+                kwargs[k] = v.encode('utf8')        
+
         message = '&'.join(map(encode, [
             __meth.upper(), __url, '&'.join(
                 '%s=%s' % (encode(k), encode(kwargs[k])) for k in sorted(kwargs)
