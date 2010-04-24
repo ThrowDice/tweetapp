@@ -9,6 +9,7 @@ Credits:
 * tav -- tav@espians.com -- http://tav.espians.com/
 * ryanwi -- http://www.webthingsconsidered.com/
 * nlehuen -- nicolas@lehuen.com -- http://nicolas.lehuen.com/
+* throwdice
 
 License:
 
