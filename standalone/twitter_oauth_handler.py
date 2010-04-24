@@ -228,7 +228,8 @@ class OAuthClient(object):
         self.handler.redirect(self.get_signed_url(
             self.service_info['user_auth_url'], token, **oauth_callback
             ))
-
+    
+    """This is where most error happens"""
     def callback(self, return_to='/'):
 
         oauth_token = self.handler.request.get("oauth_token")
